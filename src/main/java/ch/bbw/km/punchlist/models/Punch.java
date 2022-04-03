@@ -13,17 +13,26 @@ public class Punch {
     private String description;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+    private String tools;
+    private String responsable;
+    private String notes;
 
     public Punch() {
     category = "Start";
     description = "not done yet";
     date = new Date();
+    tools = "Meter";
+    responsable = "Marco";
+    notes = "-";
     }
 
-    public Punch(String category, String description, Date date) {
+    public Punch(String category, String description, Date date, String tools, String responsable, String notes) {
         this.category = category;
         this.description = description;
         this.date = date;
+        this.tools = tools;
+        this.responsable = responsable;
+        this.notes = notes;
     }
 
     public String getCategory() {
@@ -48,6 +57,30 @@ public class Punch {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getTools() {
+        return tools;
+    }
+
+    public void setTools(String tools) {
+        this.tools = tools;
+    }
+
+    public String getResponsable() {
+        return responsable;
+    }
+
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     @Override

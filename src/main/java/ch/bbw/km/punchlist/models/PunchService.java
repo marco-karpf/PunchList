@@ -16,7 +16,7 @@ import java.util.List;
 public class PunchService {
     private List<Punch> punchList = new ArrayList<>() {
         {
-            add(new Punch( "Punch 1", "Punch 1 description",  new Date()));
+            add(new Punch( "Punch 1", "Punch 1 description",  new Date(), "Meter", "Marco","-"));
 
         }
     };

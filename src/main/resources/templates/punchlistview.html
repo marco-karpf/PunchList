@@ -24,9 +24,28 @@
             <input type="text" id="description" th:field="*{description}" cols="40" rows="5"></input><br>
             <label for="date">Fälligkeit</label>
             <input id="date" type="date" th:field="*{date}" size="20"><br>
+            <p>Welche Werkzeuge werden dafür benötigt?</p>
+            <label for="hammer">Hammer</label>
+            <input type="checkbox" id="hammer" th:field="*{tools}" value="apero">
+            <label for="meter">Meter</label>
+            <input type="checkbox" id="meter" th:field="*{tools}" value="vorspeise">
+            <label for="massband">Massband</label>
+            <input type="checkbox" id="massband" th:field="*{tools}" value="hauptgang">
+            <label for="schreibblock">Schreibblock</label>
+            <input type="checkbox" id="schreibblock" th:field="*{tools}"  value="desert">
+            <p>Punch Verantwortlicher:</p>
+            <input type="radio" id="Marco" th:field="*{responsable}" value="Marco">
+            <label for="Marco">Marco</label><br>
+            <input type="radio" id="Mario" th:field="*{responsable}" value="Mario">
+            <label for="Mario">Mario</label><br>
+            <input type="radio" id="Roman"th:field="*{responsable}" value="Roman">
+            <label for="Roman">Roman</label><br>
+            <label for="notes">Bemerkung:</label><br>
+            <textarea id="notes" th:field="*{notes}" cols="40" rows="5"></textarea><br>
             <button type="submit">Absenden</button>
         </form>
     </section>
+    <br><br>
     <section>
         <header>Punch Liste</header>
         <table>
@@ -34,11 +53,17 @@
                 <th>Kategorie</th>
                 <th>Beschreibung</th>
                 <th>Fälligkeit</th>
+                <th>Tools</th>
+                <th>Verantwortlicher</th>
+                <th>Bemerkung</th>
             </tr>
             <tr th:each="punch : ${punchList}">
                 <td th:text="${punch.category}"></td>
                 <td th:text="${punch.description}"></td>
                 <td th:text="${punch.date}"></td>
+                </td><td th:text="${punch.tools}"></td>
+                </td><td th:text="${punch.responsable}"></td>
+                </td><td th:text="${punch.notes}"></td>
             </tr>
         </table>
     </section>
