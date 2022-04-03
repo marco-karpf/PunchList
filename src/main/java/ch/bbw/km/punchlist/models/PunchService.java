@@ -7,9 +7,19 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Punch Service to get Punch Items
+ * @authhor marco
+ * @version04.03.2022
+ */
 @Service
 public class PunchService {
-    private List<Punch> punchList = new ArrayList<>();
+    private List<Punch> punchList = new ArrayList<>() {
+        {
+            add(new Punch( "Punch 1", "Punch 1 description",  new Date()));
+
+        }
+    };
 
     public List<Punch> getPunchList() {
         return punchList;

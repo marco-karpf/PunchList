@@ -6,16 +6,10 @@
     <link rel="stylesheet" href="css/mvp.css">
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <li>Home</li>
-        </ul>
-    </nav>
-    <hr>
-</header>
 <main>
-    <h1>Punch Lists</h1>
+    <header>
+        <h1>Punchlist</h1>
+    </header>
     <section>
         <h3>Bitte Formular für die Reserviation ausfüllen:</h3>
         <form th:object="${punch}" th:action="@{/punchList}" method="post">
@@ -33,23 +27,26 @@
             <button type="submit">Absenden</button>
         </form>
     </section>
+    <section>
+        <header>Punch Liste</header>
+        <table>
+            <tr>
+                <th>Kategorie</th>
+                <th>Beschreibung</th>
+                <th>Fälligkeit</th>
+            </tr>
+            <tr th:each="punch : ${punchList}">
+                <td th:text="${punch.category}"></td>
+                <td th:text="${punch.description}"></td>
+                <td th:text="${punch.date}"></td>
+            </tr>
+        </table>
+    </section>
 </main>
 <footer>
+
     <hr>
-    <label>Punch Liste:</label>
-    <table>
-        <tr>
-            <th>Kategorie</th>
-            <th>Beschreibung</th>
-            <th>Fälligkeit</th>
-        </tr>
-        <tr th:each="punch : ${punchList}">
-            <td th:text="${punch.category}"></td>
-            <td th:text="${punch.description}"></td>
-            <td th:text="${punch.date}"></td>
-        </tr>
-    </table>
-    <hr>
+    <p>&copy; 2022 Karpf Marco</p>
 </footer>
 </body>
 </html>

@@ -5,12 +5,13 @@ import ch.bbw.km.punchlist.models.PunchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
+/**
+ * PunchController
+ * @author marco
+ * @version 03.04.2022
+ */
 @Controller
 public class PunchController {
 
@@ -22,18 +23,20 @@ public class PunchController {
         this.punchService = punchService;
     }
 
-    @GetMapping("/punchList")
+    @GetMapping("/")
+    @RequestMapping(value = {"/", "/punchList"}, method = RequestMethod.GET)
     public String addPunchList(Model model) {
-        System.out.println("show punchlistview");
-        Punch punch = new Punch ("1", "1 Description", "30.08.2022");
-        model.addAttribute("punch", punch);
+        System.out.println("Controller show punchlistview");
+        model.addAttribute("punch", new Punch());
+        model.addAttribute("punchList", punchService.getPunchList());
         return "punchlistview";
     }
     @PostMapping("/punchList")
     public String showPunhList(@ModelAttribute("punch") Punch punch, Model model) {
-        System.out.println("add punch to punchList");
+        System.out.println("Controller add punch to punchList");
         punchService.getPunchList().add(punch);
         System.out.println("add punch to punchList");
+        model.addAttribute("punch", new Punch());
         model.addAttribute("punchList", punchService.getPunchList());
         return "punchlistview";
     }
